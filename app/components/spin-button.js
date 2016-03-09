@@ -80,7 +80,7 @@ export default Ember.Component.extend({
     }
   },
 
-  inFlightDidChange: function() {
+  inFlightDidChange: Ember.observer("inFlight", function() {
     var element = this.get('element');
     if (!element) { return; }
 
@@ -97,7 +97,7 @@ export default Ember.Component.extend({
     }else{
       this.setEnabled();
     }
-  }.observes('inFlight'),
+  }),
 
   createSpinner: function(element) {
     if(!this._spinner) {
