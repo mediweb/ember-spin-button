@@ -103,6 +103,37 @@ $spinnerSize: 32px;
 
 
 /*************************************
+ * NONE
+ */
+
+.spin-button[data-style=none] {
+  overflow: hidden;
+}
+  .spin-button[data-style=none] .spin-button-spinner {
+    left: 150%;
+    margin-left: $spinnerSize/-2;
+
+    @include transform( scale( 0.2 ) );
+  }
+  .spin-button[data-style=none] .spin-button-label {
+    position: relative;
+    display: inline-block;
+  }
+
+.spin-button[data-style=none].in-flight .spin-button-label {
+  opacity: 0;
+
+  @include transform( scale( 2.2 ) );
+}
+.spin-button[data-style=none].in-flight .spin-button-spinner {
+  opacity: 1;
+  margin-left: 0;
+
+  @include transform( none );
+}
+
+
+/*************************************
  * EASING
  */
 
