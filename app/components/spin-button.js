@@ -73,7 +73,11 @@ export default Ember.Component.extend({
 
       if (Ember.isPresent(actionResult) &&
           ('function' === typeof actionResult.finally)) {
-        actionResult.finally(() => { this.set('inFlight', false); });
+        actionResult.finally(() => {
+          if (!this.get('isDestroyed')) {
+            this.set('inFlight', false);
+          }
+        });
       }
     }else{
       this.sendAction('action');
